@@ -8,13 +8,13 @@ const Form = props => {
           type="text"
           name="firstName"
           onChange={event => props.handleChange(event)}
-          value={props.firstName}
+          value={props.formData.firstName}
         />
         <input
           type="text"
           name="lastName"
           onChange={event => props.handleChange(event)}
-          value={props.lastName}
+          value={props.formData.lastName}
         />
       </form>
     </div>

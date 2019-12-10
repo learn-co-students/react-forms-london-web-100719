@@ -3,25 +3,22 @@ import Form from "./Form";
 import DisplayData from "./DisplayData";
 
 const ParentComponent = () => {
-  let [firstName, setFirstName] = useState("");
-  let [lastName, setLastName] = useState("");
+  let [form, setForm] = useState({
+    firstName: "",
+    lastName: ""
+  });
 
-  const handleClick = event => {
-    if (event.target.name === "firstName") {
-      setFirstName(event.target.value);
-    } else if (event.target.name === "lastName") {
-      setLastName(event.target.value);
-    }
+  const handleChange = event => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    });
   };
 
   return (
     <React.Fragment>
-      <Form
-        firstName={firstName}
-        lastName={lastName}
-        handleChange={handleClick}
-      />
-      <DisplayData firstName={firstName} lastName={lastName} />
+      <Form formData={form} handleChange={handleChange} />
+      <DisplayData formData={form} />
     </React.Fragment>
   );
 };
